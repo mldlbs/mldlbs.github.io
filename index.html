@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>测试消防GIS!</title>
+    <link rel="stylesheet" href="http://www.supermapol.com/earth/static/Cesium/Widgets/widgets.css">
+    <script type="text/javascript" src="http://www.supermapol.com/earth/vue-iEarth/static/Cesium/Cesium.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css"> -->
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script> -->
+    <script type="text/javascript" src="https://gitee.com/n7gs7/ccgis/raw/master/dist/ccgis.js"></script>
+    <script type="text/javascript" src="https://gitee.com/n7gs7/ccgis/raw/master/dist/features.js"></script>
+    <script type="text/javascript" src="https://gitee.com/n7gs7/ccgis/raw/master/dist/plan-tools.js"></script>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        #cesiumContainer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .tools {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #fff;
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mapContainer"></div>
+    <div id="cesiumContainer"></div>
+    <div class="tools">
+        <button id="point">事件点</button>
+        <button id="change">修改位置</button>
+    </div>
+</body>
+<script>
+    let CCGIS = ccgis.default;
+    let AlertMarker = window['features'].AlertMarker;
+    let psg = new CCGIS({
+        cesium: {
+            sceneid: 'cesiumContainer'
+        },
+        modules: [AlertMarker]
+    });
+    let b3d = psg.get('cc3dcesium');
+    // 
+
+    let entity;
+    document.getElementById('point').onclick = function () {
+        const position = {
+            longitude: 104.176852816074,
+            latitude: 36.5506279715878,
+            height: 24.331
+        }
+        const alertmarker = psg.get('alertmarker')
+        entity = alertmarker.create({
+            position: Cesium.Cartesian3.fromDegrees(position.longitude, position.latitude, position.height + 1),
+            iconUrl: './static/images/entity/pos_red.png',
+            color: Cesium.Color.RED
+        })
+        b3d.viewer.camera.flyTo({
+            destination: new Cesium.Cartesian3.fromDegrees(position.longitude, position.latitude - 0.009,
+                618),
+            orientation: {
+                roll: 0,
+                heading: 0,
+                pitch: -Math.PI / 6
+            },
+            duration: 3
+        })
+    };
+
+    document.getElementById('change').onclick = function () {
+        const position = {
+            longitude: 104.176852816074,
+            latitude: 36.5506279715878,
+            height: 0
+        }
+        entity.position = Cesium.Cartesian3.fromDegrees(position.longitude, position.latitude, position.height + 1)
+    };
+</script>
+</html>
