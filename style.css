@@ -77,33 +77,6 @@ body {
     color: var(--primary-color);
 }
 
-/* 移动端导航 */
-@media (max-width: 768px) {
-    .nav-menu {
-        gap: 1rem;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background-color: var(--secondary-color);
-        padding: 1rem 0;
-        display: none;
-    }
-
-    .nav-menu.active {
-        display: flex;
-    }
-
-    .nav-item {
-        padding: 0 20px;
-    }
-
-    .nav-container {
-        position: relative;
-    }
-}
-
 /* 首页头部 */
 .hero {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -409,10 +382,6 @@ body {
 
 /* 手机适配 */
 @media (max-width: 480px) {
-    .nav-menu {
-        gap: 0.5rem;
-    }
-
     .nav-logo {
         font-size: 1.2rem;
     }

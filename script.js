@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
     loadArticles();
     setupNavigation();
     setupSmoothScroll();
-    setupMobileMenu();
 });
 
 // 加载文章列表
@@ -112,13 +111,8 @@ function setupNavigation() {
     
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            // 移除其他链接的活跃状态
             navLinks.forEach(l => l.style.borderBottom = 'none');
-            // 添加当前链接的活跃状态
             this.style.borderBottom = '2px solid var(--primary-color)';
-            
-            // 关闭移动端菜单
-            closeMobileMenu();
         });
     });
 }
@@ -134,7 +128,7 @@ function setupSmoothScroll() {
                 e.preventDefault();
                 
                 const targetElement = document.querySelector(href);
-                const offsetTop = targetElement.offsetTop - 60; // 减去导航栏高度
+                const offsetTop = targetElement.offsetTop - 60;
                 
                 window.scrollTo({
                     top: offsetTop,
@@ -143,26 +137,6 @@ function setupSmoothScroll() {
             }
         });
     });
-}
-
-// 移动端菜单函数
-function setupMobileMenu() {
-    const navMenu = document.querySelector('.nav-menu');
-    if (navMenu) {
-        // 检查窗口大小
-        window.addEventListener('resize', function () {
-            if (window.innerWidth > 768) {
-                navMenu.classList.remove('active');
-            }
-        });
-    }
-}
-
-function closeMobileMenu() {
-    const navMenu = document.querySelector('.nav-menu');
-    if (navMenu) {
-        navMenu.classList.remove('active');
-    }
 }
 
 // 返回顶部按钮
@@ -205,9 +179,7 @@ function createBackToTopButton() {
     });
 }
 
-// 初始化返回顶部按钮
 createBackToTopButton();
 
-// 打印欢迎信息到控制台
 console.log('%c欢迎来到 mldlbs 的博客！', 'color: #3498db; font-size: 20px; font-weight: bold;');
 console.log('%c如有任何问题或建议，欢迎通过 GitHub 与我联系。', 'color: #666; font-size: 14px;');
