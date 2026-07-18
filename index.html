@@ -1,95 +1,103 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <title>测试消防GIS!</title>
-    <link rel="stylesheet" href="http://www.supermapol.com/earth/static/Cesium/Widgets/widgets.css">
-    <script type="text/javascript" src="http://www.supermapol.com/earth/vue-iEarth/static/Cesium/Cesium.js"></script>
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.css"> -->
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/leaflet.js"></script> -->
-    <script type="text/javascript" src="https://gitee.com/n7gs7/ccgis/raw/master/dist/ccgis.js"></script>
-    <script type="text/javascript" src="https://gitee.com/n7gs7/ccgis/raw/master/dist/features.js"></script>
-    <script type="text/javascript" src="https://gitee.com/n7gs7/ccgis/raw/master/dist/plan-tools.js"></script>
-    <style>
-        html,
-        body {
-            padding: 0;
-            margin: 0;
-        }
-
-        #cesiumContainer {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-
-        .tools {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            color: #fff;
-            z-index: 999;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mldlbs的博客 - 前端与GIS技术分享</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div id="mapContainer"></div>
-    <div id="cesiumContainer"></div>
-    <div class="tools">
-        <button id="point">事件点</button>
-        <button id="change">修改位置</button>
-    </div>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">mldlbs</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">首页</a></li>
+                <li class="nav-item"><a href="#articles" class="nav-link">文章</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">关于</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首页头部 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>欢迎来到我的博客</h1>
+            <p>分享前端技术、GIS地理信息系统、3D可视化经验</p>
+            <a href="#articles" class="cta-button">开始阅读</a>
+        </div>
+    </section>
+
+    <!-- 文章列表 -->
+    <section id="articles" class="articles-section">
+        <div class="container">
+            <h2 class="section-title">最新文章</h2>
+            
+            <div class="articles-grid" id="articles-container">
+                <!-- 文章卡片会由 JavaScript 动态生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于部分 -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        您好！我是 mldlbs，一名热爱开源的开发者。
+                    </p>
+                    <p>
+                        我专注于前端开发、地理信息系统(GIS)、3D可视化等领域。
+                        这个博客用来记录学习心得、分享技术经验。
+                    </p>
+                    <p>
+                        主要技术栈：JavaScript、Vue.js、React、Cesium.js、Three.js
+                    </p>
+                </div>
+                <div class="skills">
+                    <h3>技能标签</h3>
+                    <div class="skill-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Vue.js</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Cesium</span>
+                        <span class="tag">Three.js</span>
+                        <span class="tag">GIS</span>
+                        <span class="tag">WebGL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系部分 -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">联系我</h2>
+            <div class="contact-content">
+                <p>欢迎通过以下方式与我联系：</p>
+                <div class="contact-links">
+                    <a href="https://github.com/mldlbs" target="_blank" class="contact-link">
+                        <span class="icon">🔗</span> GitHub
+                    </a>
+                    <a href="mailto:your-email@example.com" class="contact-link">
+                        <span class="icon">📧</span> Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 mldlbs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
-<script>
-    let CCGIS = ccgis.default;
-    let AlertMarker = window['features'].AlertMarker;
-    let psg = new CCGIS({
-        cesium: {
-            sceneid: 'cesiumContainer'
-        },
-        modules: [AlertMarker]
-    });
-    let b3d = psg.get('cc3dcesium');
-    // 
-
-    let entity;
-    document.getElementById('point').onclick = function () {
-        const position = {
-            longitude: 104.176852816074,
-            latitude: 36.5506279715878,
-            height: 24.331
-        }
-        const alertmarker = psg.get('alertmarker')
-        entity = alertmarker.create({
-            position: Cesium.Cartesian3.fromDegrees(position.longitude, position.latitude, position.height + 1),
-            iconUrl: './static/images/entity/pos_red.png',
-            color: Cesium.Color.RED
-        })
-        b3d.viewer.camera.flyTo({
-            destination: new Cesium.Cartesian3.fromDegrees(position.longitude, position.latitude - 0.009,
-                618),
-            orientation: {
-                roll: 0,
-                heading: 0,
-                pitch: -Math.PI / 6
-            },
-            duration: 3
-        })
-    };
-
-    document.getElementById('change').onclick = function () {
-        const position = {
-            longitude: 104.176852816074,
-            latitude: 36.5506279715878,
-            height: 0
-        }
-        entity.position = Cesium.Cartesian3.fromDegrees(position.longitude, position.latitude, position.height + 1)
-    };
-</script>
 </html>
