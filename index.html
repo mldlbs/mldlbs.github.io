@@ -3,39 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mldlbs的博客 - 前端与GIS技术分享</title>
+    <title>mldlbs - 前端工程师 & GIS技术专家</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="/" class="nav-logo">mldlbs</a>
-            <ul class="nav-menu">
+            <a href="/" class="nav-logo">
+                <i class="fas fa-code"></i> mldlbs
+            </a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
                 <li class="nav-item"><a href="#home" class="nav-link">首页</a></li>
-                <li class="nav-item"><a href="#articles" class="nav-link">文章</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">项目</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">关于</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">联系</a></li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="themeToggle" title="切换主题">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
 
-    <!-- 首页头部 -->
+    <!-- 英雄部分 -->
     <section id="home" class="hero">
+        <div class="stars"></div>
         <div class="hero-content">
-            <h1>欢迎来到我的博客</h1>
-            <p>分享前端技术、GIS地理信息系统、3D可视化经验</p>
-            <a href="#articles" class="cta-button">开始阅读</a>
+            <div class="hero-greeting">
+                <span class="wave">👋</span>
+                <p>欢迎来到我的数字世界</p>
+            </div>
+            <h1 class="hero-title">
+                <span class="gradient-text">前端工程师</span>
+                <span class="text-divider">&</span>
+                <span class="gradient-text">GIS技术专家</span>
+            </h1>
+            <p class="hero-subtitle">
+                用代码创造互动体验 | 用技术探索地理世界
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> 查看作品
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> 联系我
+                </a>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <div class="arrow"></div>
+            </div>
         </div>
     </section>
 
-    <!-- 文章列表 -->
-    <section id="articles" class="articles-section">
+    <!-- 技能部分 -->
+    <section class="skills-section">
         <div class="container">
-            <h2 class="section-title">最新文章</h2>
-            
-            <div class="articles-grid" id="articles-container">
-                <!-- 文章卡片会由 JavaScript 动态生成 -->
+            <h2 class="section-title">技能栈</h2>
+            <div class="skills-grid">
+                <div class="skill-card glass">
+                    <div class="skill-icon">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>现代 JS 框架与库</p>
+                    <div class="skill-tags">
+                        <span class="tag">ES6+</span>
+                        <span class="tag">Async</span>
+                    </div>
+                </div>
+
+                <div class="skill-card glass">
+                    <div class="skill-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>React & Vue.js</h3>
+                    <p>前端框架开发</p>
+                    <div class="skill-tags">
+                        <span class="tag">Hooks</span>
+                        <span class="tag">Composition</span>
+                    </div>
+                </div>
+
+                <div class="skill-card glass">
+                    <div class="skill-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>GIS & 地图</h3>
+                    <p>地理信息系统</p>
+                    <div class="skill-tags">
+                        <span class="tag">Cesium</span>
+                        <span class="tag">Leaflet</span>
+                    </div>
+                </div>
+
+                <div class="skill-card glass">
+                    <div class="skill-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>3D 可视化</h3>
+                    <p>三维渲染引擎</p>
+                    <div class="skill-tags">
+                        <span class="tag">Three.js</span>
+                        <span class="tag">WebGL</span>
+                    </div>
+                </div>
+
+                <div class="skill-card glass">
+                    <div class="skill-icon">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h3>Node.js</h3>
+                    <p>后端开发</p>
+                    <div class="skill-tags">
+                        <span class="tag">Express</span>
+                        <span class="tag">Database</span>
+                    </div>
+                </div>
+
+                <div class="skill-card glass">
+                    <div class="skill-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>开发工具</h3>
+                    <p>工程化开发</p>
+                    <div class="skill-tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 项目部分 -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2 class="section-title">精选项目</h2>
+            <div class="projects-grid">
+                <div class="project-card glass">
+                    <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-map-location-dot"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>3D 地球可视化</h3>
+                        <p>基于 Cesium.js 的交互式 3D 地球应用，支持实时数据可视化</p>
+                        <div class="project-tags">
+                            <span class="tag">Cesium</span>
+                            <span class="tag">3D</span>
+                            <span class="tag">GIS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="link-btn">
+                                <i class="fas fa-external-link"></i> 预览
+                            </a>
+                            <a href="https://github.com/mldlbs" class="link-btn">
+                                <i class="fab fa-github"></i> 代码
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card glass">
+                    <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>数据可视化平台</h3>
+                        <p>企业级数据可视化仪表板，实时展示多维度数据分析</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">ECharts</span>
+                            <span class="tag">Data</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="link-btn">
+                                <i class="fas fa-external-link"></i> 预览
+                            </a>
+                            <a href="https://github.com/mldlbs" class="link-btn">
+                                <i class="fab fa-github"></i> 代码
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card glass">
+                    <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>WebGL 场景编辑器</h3>
+                        <p>实时 3D 场景编辑工具，支持模型导入和动画控制</p>
+                        <div class="project-tags">
+                            <span class="tag">Three.js</span>
+                            <span class="tag">WebGL</span>
+                            <span class="tag">3D</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="link-btn">
+                                <i class="fas fa-external-link"></i> 预览
+                            </a>
+                            <a href="https://github.com/mldlbs" class="link-btn">
+                                <i class="fab fa-github"></i> 代码
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -44,30 +227,75 @@
     <section id="about" class="about-section">
         <div class="container">
             <h2 class="section-title">关于我</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        您好！我是 mldlbs，一名热爱开源的开发者。
-                    </p>
-                    <p>
-                        我专注于前端开发、地理信息系统(GIS)、3D可视化等领域。
-                        这个博客用来记录学习心得、分享技术经验。
-                    </p>
-                    <p>
-                        主要技术栈：JavaScript、Vue.js、React、Cesium.js、Three.js
-                    </p>
-                </div>
-                <div class="skills">
-                    <h3>技能标签</h3>
-                    <div class="skill-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Vue.js</span>
-                        <span class="tag">React</span>
-                        <span class="tag">Cesium</span>
-                        <span class="tag">Three.js</span>
-                        <span class="tag">GIS</span>
-                        <span class="tag">WebGL</span>
+            <div class="about-grid">
+                <div class="about-card glass">
+                    <div class="about-icon">
+                        <i class="fas fa-code"></i>
                     </div>
+                    <h3>代码热情</h3>
+                    <p>对编程充满热情，相信优雅的代码可以改变世界。持续学习新技术，追求代码质量。</p>
+                </div>
+
+                <div class="about-card glass">
+                    <div class="about-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>创新思维</h3>
+                    <p>喜欢探索新的技术方案，用创新的思维解决复杂问题，推动项目持续进步。</p>
+                </div>
+
+                <div class="about-card glass">
+                    <div class="about-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>团队协作</h3>
+                    <p>相信团队的力量，积极沟通与协作，乐于分享知识和经验，共同成长。</p>
+                </div>
+
+                <div class="about-card glass">
+                    <div class="about-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>持续进步</h3>
+                    <p>不满足于现状，持续学习和进步，关注行业动态，追求技术卓越。</p>
+                </div>
+            </div>
+
+            <div class="about-text">
+                <p>
+                    👋 大家好！我是 mldlbs，一名资深前端工程师和 GIS 技术专家。
+                </p>
+                <p>
+                    我专注于前端开发、地理信息系统(GIS)、3D 可视化等领域。
+                    拥有丰富的企业级项目开发经验，曾参与多个大型数据可视化和地理信息系统项目。
+                </p>
+                <p>
+                    这个空间用来分享我的技术心得、项目经验和学习笔记。
+                    欢迎交流、指正和合作！
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 统计部分 -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card glass">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">项目完成</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-number">8+</div>
+                    <div class="stat-label">年开发经验</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">开源贡献</div>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">GitHub Stars</div>
                 </div>
             </div>
         </div>
@@ -77,16 +305,40 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <h2 class="section-title">联系我</h2>
-            <div class="contact-content">
-                <p>欢迎通过以下方式与我联系：</p>
-                <div class="contact-links">
-                    <a href="https://github.com/mldlbs" target="_blank" class="contact-link">
-                        <span class="icon">🔗</span> GitHub
-                    </a>
-                    <a href="mailto:your-email@example.com" class="contact-link">
-                        <span class="icon">📧</span> Email
-                    </a>
-                </div>
+            <p class="contact-subtitle">有想法或需要合作？随时欢迎联系我！</p>
+
+            <div class="contact-grid">
+                <a href="https://github.com/mldlbs" target="_blank" class="contact-card glass">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>@mldlbs</p>
+                </a>
+
+                <a href="mailto:903288675@qq.com" class="contact-card glass">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>邮箱</h3>
+                    <p>903288675@qq.com</p>
+                </a>
+
+                <a href="#" class="contact-card glass">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>连接我</p>
+                </a>
+
+                <a href="#" class="contact-card glass">
+                    <div class="contact-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <h3>Twitter</h3>
+                    <p>关注我</p>
+                </a>
             </div>
         </div>
     </section>
@@ -94,7 +346,35 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 mldlbs. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>mldlbs</h4>
+                    <p>前端工程师 × GIS技术专家</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#projects">项目</a></li>
+                        <li><a href="#about">关于</a></li>
+                        <li><a href="#contact">联系</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>社交媒体</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/mldlbs" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:903288675@qq.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 mldlbs. 由 ❤️ 和代码驱动</p>
+            </div>
         </div>
     </footer>
 
